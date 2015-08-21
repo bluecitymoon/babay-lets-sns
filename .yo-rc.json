@@ -1,0 +1,21 @@
+{
+  "generator-jhipster": {
+    "baseName": "dtsns",
+    "packageName": "com.doubletuan.sns",
+    "packageFolder": "com/doubletuan/sns",
+    "authenticationType": "oauth2",
+    "hibernateCache": "no",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "no",
+    "useCompass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "javaVersion": "8",
+    "enableTranslation": false,
+    "rememberMeKey": "2fd22b6e6a0a8dd6d41b0d4324908af521311999"
+  }
+}
