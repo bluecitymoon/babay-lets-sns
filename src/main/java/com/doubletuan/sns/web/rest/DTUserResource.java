@@ -4,6 +4,8 @@ import com.codahale.metrics.annotation.Timed;
 import com.doubletuan.sns.domain.DTUser;
 import com.doubletuan.sns.repository.DTUserRepository;
 import com.doubletuan.sns.web.rest.util.PaginationUtil;
+
+import org.igniterealtime.restclient.entity.UserEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -24,7 +26,7 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("/api")
-public class DTUserResource {
+public class DTUserResource extends BaseResource{
 
     private final Logger log = LoggerFactory.getLogger(DTUserResource.class);
 
@@ -47,6 +49,34 @@ public class DTUserResource {
         return ResponseEntity.created(new URI("/api/dTUsers/" + dTUser.getId())).body(result);
     }
 
+    /**
+     * POST  /dTUsers -> Create a new dTUser.
+     */
+    @RequestMapping(value = "/dTUsers/validate/{username}",
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<Boolean> validate(@PathVariable("username") String username) throws URISyntaxException {
+        log.debug("REST request to save validate : {}", username);
+        
+        //if user first login the app, create the im account for him.
+        DTUser user = dTUserRepository.findByUsername(username);
+        
+        if (user == null) {
+			
+        	UserEntity userEntity = new UserEntity();
+        	userEntity.setUsername(username);
+        	userEntity.setPassword(username);
+        	
+        	boolean result = getRestApiClient().createUser(userEntity);
+        	
+		} else {
+			return ResponseEntity.ok(true);
+		}
+        
+        return ResponseEntity.ok(true);
+    }
+    
     /**
      * PUT  /dTUsers -> Updates an existing dTUser.
      */

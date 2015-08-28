@@ -9,5 +9,7 @@ import java.util.List;
  * Spring Data JPA repository for the DTUser entity.
  */
 public interface DTUserRepository extends JpaRepository<DTUser,Long> {
+	
+	public DTUser findByUsername(String username);
 
 }
