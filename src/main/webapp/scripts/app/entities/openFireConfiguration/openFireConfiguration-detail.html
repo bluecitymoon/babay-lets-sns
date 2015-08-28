@@ -1,0 +1,55 @@
+
+<div>
+    <h2><span>OpenFireConfiguration</span> {{openFireConfiguration.id}}</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span>AuthenticationToken</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{openFireConfiguration.authenticationToken}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>ServerAddress</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{openFireConfiguration.serverAddress}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>RestApiPort</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{openFireConfiguration.restApiPort}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Identifier</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{openFireConfiguration.identifier}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="openFireConfiguration"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

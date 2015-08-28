@@ -1,0 +1,57 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "authenticationToken",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "AuthenticationToken",
+            "fieldNameUnderscored": "authentication_token",
+            "fieldInJavaBeanMethod": "AuthenticationToken",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "serverAddress",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "ServerAddress",
+            "fieldNameUnderscored": "server_address",
+            "fieldInJavaBeanMethod": "ServerAddress",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "restApiPort",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "RestApiPort",
+            "fieldNameUnderscored": "rest_api_port",
+            "fieldInJavaBeanMethod": "RestApiPort",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "identifier",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "Identifier",
+            "fieldNameUnderscored": "identifier",
+            "fieldInJavaBeanMethod": "Identifier",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOwnerOneToOne": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150824025858",
+    "dto": "no",
+    "pagination": "no",
+    "validation": false
+}

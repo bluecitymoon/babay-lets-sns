@@ -1,0 +1,77 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "username",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "Username",
+            "fieldNameUnderscored": "username",
+            "fieldInJavaBeanMethod": "Username",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "password",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "Password",
+            "fieldNameUnderscored": "password",
+            "fieldInJavaBeanMethod": "Password",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "avatar",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "Avatar",
+            "fieldNameUnderscored": "avatar",
+            "fieldInJavaBeanMethod": "Avatar",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "phone",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "Phone",
+            "fieldNameUnderscored": "phone",
+            "fieldInJavaBeanMethod": "Phone",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "sign",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "Sign",
+            "fieldNameUnderscored": "sign",
+            "fieldInJavaBeanMethod": "Sign",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "birthday",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "Birthday",
+            "fieldNameUnderscored": "birthday",
+            "fieldInJavaBeanMethod": "Birthday",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOwnerOneToOne": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150828082715",
+    "dto": "no",
+    "pagination": "pagination",
+    "validation": false
+}

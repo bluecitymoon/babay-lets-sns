@@ -1,0 +1,50 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myOpenFireConfigurationLabel">Create or edit a OpenFireConfiguration</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label>ID</label>
+            <input type="text" class="form-control" name="id"
+                    ng-model="openFireConfiguration.id" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="field_authenticationToken">AuthenticationToken</label>
+            <input type="text" class="form-control" name="authenticationToken" id="field_authenticationToken"
+                    ng-model="openFireConfiguration.authenticationToken">
+
+        </div>
+        <div class="form-group">
+            <label for="field_serverAddress">ServerAddress</label>
+            <input type="text" class="form-control" name="serverAddress" id="field_serverAddress"
+                    ng-model="openFireConfiguration.serverAddress">
+
+        </div>
+        <div class="form-group">
+            <label for="field_restApiPort">RestApiPort</label>
+            <input type="text" class="form-control" name="restApiPort" id="field_restApiPort"
+                    ng-model="openFireConfiguration.restApiPort">
+
+        </div>
+        <div class="form-group">
+            <label for="field_identifier">Identifier</label>
+            <input type="text" class="form-control" name="identifier" id="field_identifier"
+                    ng-model="openFireConfiguration.identifier">
+
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

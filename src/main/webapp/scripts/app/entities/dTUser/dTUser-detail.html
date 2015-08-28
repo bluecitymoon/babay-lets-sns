@@ -1,0 +1,71 @@
+
+<div>
+    <h2><span>DTUser</span> {{dTUser.id}}</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span>Username</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{dTUser.username}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Password</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{dTUser.password}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Avatar</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{dTUser.avatar}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Phone</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{dTUser.phone}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Sign</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{dTUser.sign}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Birthday</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{dTUser.birthday}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="dTUser"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>
