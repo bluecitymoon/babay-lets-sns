@@ -1,24 +1,28 @@
 package com.doubletuan.sns;
 
-import com.doubletuan.sns.config.Constants;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.Arrays;
+import java.util.Collection;
+
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.actuate.autoconfigure.MetricFilterAutoConfiguration;
 import org.springframework.boot.actuate.autoconfigure.MetricRepositoryAutoConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.SimpleCommandLinePropertySource;
-import com.google.common.base.Joiner;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.Arrays;
-import java.util.Collection;
+import com.doubletuan.sns.config.Constants;
+import com.google.common.base.Joiner;
 
 @ComponentScan
 @EnableAutoConfiguration(exclude = {MetricFilterAutoConfiguration.class, MetricRepositoryAutoConfiguration.class})
@@ -60,6 +64,16 @@ public class Application {
         }
     }
 
+//    @Bean
+//    public CommonsMultipartResolver multipartResolver(){
+//    	
+//        CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+//        commonsMultipartResolver.setDefaultEncoding("utf-8");
+//        commonsMultipartResolver.setMaxUploadSize(50000000);
+//        
+//        return commonsMultipartResolver;
+//    }
+    
     /**
      * Main method, used to run the application.
      */

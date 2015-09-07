@@ -1,0 +1,63 @@
+
+<div>
+    <h2><span>UserPost</span> {{userPost.id}}</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span>Content</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{userPost.content}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>CreateDate</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{userPost.createDate}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>GreetCount</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{userPost.greetCount}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>CommentsCount</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{userPost.commentsCount}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Jid</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{userPost.jid}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="userPost"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

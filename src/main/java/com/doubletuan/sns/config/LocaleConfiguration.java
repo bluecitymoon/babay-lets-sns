@@ -1,6 +1,7 @@
 package com.doubletuan.sns.config;
 
-import com.doubletuan.sns.config.locale.AngularCookieLocaleResolver;
+import javax.servlet.MultipartConfigElement;
+
 import org.springframework.boot.bind.RelaxedPropertyResolver;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.MessageSource;
@@ -8,10 +9,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+
+import com.doubletuan.sns.config.locale.AngularCookieLocaleResolver;
 
 @Configuration
 public class LocaleConfiguration extends WebMvcConfigurerAdapter implements EnvironmentAware {
@@ -29,7 +34,23 @@ public class LocaleConfiguration extends WebMvcConfigurerAdapter implements Envi
         cookieLocaleResolver.setCookieName("NG_TRANSLATE_LANG_KEY");
         return cookieLocaleResolver;
     }
-
+    
+    @Bean
+    public MultipartConfigElement multipartConfigElement() {
+    	MultipartConfigElement multipartConfigElement = new MultipartConfigElement("", 209715200, 209715200, 1);
+    	
+    	return multipartConfigElement;
+    }
+    
+//    @Bean(name="multipartResolver")
+//    public MultipartResolver multipartResolver() {
+//    	
+//    	CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+//    	commonsMultipartResolver.setMaxUploadSize(2097152);
+//    	
+//        return commonsMultipartResolver;
+//    }
+//    
     @Bean
     public MessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
