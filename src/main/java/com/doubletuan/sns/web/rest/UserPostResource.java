@@ -72,65 +72,52 @@ public class UserPostResource {
 
 	/**
 	 * POST /userPosts -> Create a new userPost.
-	 * @throws IOException 
+	 * 
+	 * @throws IOException
 	 */
-	@RequestMapping(value = "/userPostsWithImages", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes= MediaType.MULTIPART_FORM_DATA_VALUE)
+	@RequestMapping(value = "/userPostsWithImages", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	@Timed
-	public ResponseEntity createWithImages( @RequestParam(value = "fileName", required = false) String fileName, @RequestParam(value = "file", required = false) MultipartFile[] files)
-			throws URISyntaxException, IOException {
+	public ResponseEntity createWithImages(@RequestParam(value = "fileName", required = false) String fileName,
+			@RequestParam(value = "file", required = false) MultipartFile[] files)
+					throws URISyntaxException, IOException {
 
 		System.out.println("file name is " + fileName);
-		
+
 		if (files != null && files.length > 0) {
-			
+
 			for (int i = 0; i < files.length; i++) {
 				MultipartFile file = files[i];
-				
-				FileOutputStream fileOutputStream = new FileOutputStream(new File("/Users/jerry/Desktop/api/04-代码/dt-tarmag/dt-tarmag-api/pictures/" + System.currentTimeMillis() + "_"+ file.getOriginalFilename()));
-				
+
+				FileOutputStream fileOutputStream = new FileOutputStream(
+						new File("/Users/jerry/Desktop/api/04-代码/dt-tarmag/dt-tarmag-api/pictures/"
+								+ System.currentTimeMillis() + "_" + file.getOriginalFilename()));
+
 				IOUtils.copy(file.getInputStream(), fileOutputStream);
 			}
 		}
-		
+
 		return ResponseEntity.ok().build();
 
 	}
 
-	protected int size(InputStream stream) {
-		int length = 0;
-		try {
-			byte[] buffer = new byte[2048];
-			int size;
-			while ((size = stream.read(buffer)) != -1) {
-				length += size;
-				// for (int i = 0; i < size; i++) {
-				// System.out.print((char) buffer[i]);
-				// }
-			}
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-		return length;
+	/**
+	 * POST /userPosts -> Create a new userPost.
+	 * 
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "/userPostsWithImages", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	@Timed
+	public ResponseEntity createWithSingleImage(@RequestParam(value = "fileName", required = false) String fileName,
+			@RequestParam(value = "file", required = false) MultipartFile file) throws URISyntaxException, IOException {
 
-	}
+		FileOutputStream fileOutputStream = new FileOutputStream(
+				new File("/Users/jerry/Desktop/api/04-代码/dt-tarmag/dt-tarmag-api/pictures/" + System.currentTimeMillis()
+						+ "_" + file.getOriginalFilename()));
 
-	protected String read(InputStream stream) {
-		StringBuilder sb = new StringBuilder();
-		BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
-		try {
-			String line;
-			while ((line = reader.readLine()) != null) {
-				sb.append(line);
-			}
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		} finally {
-			try {
-				reader.close();
-			} catch (IOException e) {
-			}
-		}
-		return sb.toString();
+		IOUtils.copy(file.getInputStream(), fileOutputStream);
+
+		return ResponseEntity.ok().build();
+
 	}
 
 	/**
