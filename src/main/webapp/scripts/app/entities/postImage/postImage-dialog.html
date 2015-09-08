@@ -1,0 +1,55 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myPostImageLabel">Create or edit a PostImage</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label>ID</label>
+            <input type="text" class="form-control" name="id"
+                    ng-model="postImage.id" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="field_src">Src</label>
+            <input type="text" class="form-control" name="src" id="field_src"
+                    ng-model="postImage.src">
+
+        </div>
+        <div class="form-group">
+            <label for="field_src1">Src1</label>
+            <input type="text" class="form-control" name="src1" id="field_src1"
+                    ng-model="postImage.src1">
+
+        </div>
+        <div class="form-group">
+            <label for="field_src2">Src2</label>
+            <input type="text" class="form-control" name="src2" id="field_src2"
+                    ng-model="postImage.src2">
+
+        </div>
+        <div class="form-group">
+            <label for="field_src3">Src3</label>
+            <input type="text" class="form-control" name="src3" id="field_src3"
+                    ng-model="postImage.src3">
+
+        </div>
+
+        <div class="form-group">
+            <label for="field_userPost">userPost</label>
+            <select class="form-control" id="field_userPost" name="userPost" ng-model="postImage.userPost.id" ng-options="userPost.id as userPost.jid for userPost in userposts">
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

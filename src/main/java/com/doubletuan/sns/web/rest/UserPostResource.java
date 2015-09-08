@@ -105,7 +105,7 @@ public class UserPostResource {
 	 * 
 	 * @throws IOException
 	 */
-	@RequestMapping(value = "/userPostsWithImages", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	@RequestMapping(value = "/userPostsWithSingleImage", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	@Timed
 	public ResponseEntity createWithSingleImage(@RequestParam(value = "fileName", required = false) String fileName,
 			@RequestParam(value = "file", required = false) MultipartFile file) throws URISyntaxException, IOException {

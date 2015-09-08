@@ -9,6 +9,7 @@ import org.joda.time.DateTime;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -40,8 +41,19 @@ public class UserPost implements Serializable {
 
     @Column(name = "jid")
     private String jid;
+    
+    @OneToMany
+    List<PostImage> postImages;
 
-    public Long getId() {
+    public List<PostImage> getPostImages() {
+		return postImages;
+	}
+
+	public void setPostImages(List<PostImage> postImages) {
+		this.postImages = postImages;
+	}
+
+	public Long getId() {
         return id;
     }
 

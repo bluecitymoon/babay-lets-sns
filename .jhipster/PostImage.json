@@ -1,0 +1,68 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "userPost",
+            "relationshipNameCapitalized": "UserPost",
+            "relationshipFieldName": "userPost",
+            "otherEntityName": "userPost",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "UserPost",
+            "otherEntityField": "jid"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "src",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "Src",
+            "fieldNameUnderscored": "src",
+            "fieldInJavaBeanMethod": "Src",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "src1",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "Src1",
+            "fieldNameUnderscored": "src1",
+            "fieldInJavaBeanMethod": "Src1",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "src2",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "Src2",
+            "fieldNameUnderscored": "src2",
+            "fieldInJavaBeanMethod": "Src2",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "src3",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "Src3",
+            "fieldNameUnderscored": "src3",
+            "fieldInJavaBeanMethod": "Src3",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOwnerOneToOne": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150908031230",
+    "dto": "no",
+    "pagination": "pagination",
+    "validation": false
+}

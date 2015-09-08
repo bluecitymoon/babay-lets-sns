@@ -1,0 +1,63 @@
+
+<div>
+    <h2><span>PostImage</span> {{postImage.id}}</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span>Src</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{postImage.src}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Src1</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{postImage.src1}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Src2</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{postImage.src2}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Src3</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{postImage.src3}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>userPost</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{postImage.userPost.jid}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="postImage"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>
