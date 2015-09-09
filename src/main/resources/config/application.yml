@@ -11,6 +11,7 @@ jhipster.security.rememberme.key: 2fd22b6e6a0a8dd6d41b0d4324908af521311999
 multipart.maxFileSize: 5MB
 multipart.maxRequestSize: 5MB
 
+post.image.file.path: /Users/jerry/Desktop/api/04-代码/dt-sns/src/main/webapp/assets/posts/
 async:
     corePoolSize: 2
     maxPoolSize: 50

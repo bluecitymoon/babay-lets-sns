@@ -1,28 +1,15 @@
 package com.doubletuan.sns.web.rest;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Enumeration;
 import java.util.List;
 import java.util.Optional;
 
-import javax.imageio.stream.FileImageOutputStream;
+import javax.annotation.Resource;
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.fileupload.FileItemIterator;
-import org.apache.commons.fileupload.FileItemStream;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -41,8 +28,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.codahale.metrics.annotation.Timed;
 import com.doubletuan.sns.domain.UserPost;
 import com.doubletuan.sns.repository.UserPostRepository;
+import com.doubletuan.sns.service.PostService;
 import com.doubletuan.sns.web.rest.util.PaginationUtil;
-import com.google.common.io.Files;
 
 /**
  * REST controller for managing UserPost.
@@ -55,6 +42,9 @@ public class UserPostResource {
 
 	@Inject
 	private UserPostRepository userPostRepository;
+	
+	@Resource(name="PostService")
+	private PostService postService;
 
 	/**
 	 * POST /userPosts -> Create a new userPost.
@@ -72,29 +62,38 @@ public class UserPostResource {
 
 	/**
 	 * POST /userPosts -> Create a new userPost.
+	 */
+	@RequestMapping(value = "/singlePost", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public ResponseEntity<String> createSinglePost(@RequestBody UserPost userPost) throws URISyntaxException {
+		
+		log.debug("REST request to save single post : {}", userPost);
+		if (userPost.getId() != null) {
+			return ResponseEntity.badRequest().header("Failure", "A new userPost cannot already have an ID").body(null);
+		}
+		UserPost result = userPostRepository.save(userPost);
+		
+		return ResponseEntity.ok().body(result.getId().toString());
+	}
+	
+	/**
+	 * POST /userPosts -> Create a new userPost.
 	 * 
 	 * @throws IOException
 	 */
 	@RequestMapping(value = "/userPostsWithImages", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	@Timed
-	public ResponseEntity createWithImages(@RequestParam(value = "fileName", required = false) String fileName,
+	public ResponseEntity createWithImages(@RequestParam(value = "content", required = false) String content, @RequestParam(value = "jid", required = true) String jid, 
 			@RequestParam(value = "file", required = false) MultipartFile[] files)
 					throws URISyntaxException, IOException {
 
-		System.out.println("file name is " + fileName);
-
-		if (files != null && files.length > 0) {
-
-			for (int i = 0; i < files.length; i++) {
-				MultipartFile file = files[i];
-
-				FileOutputStream fileOutputStream = new FileOutputStream(
-						new File("/Users/jerry/Desktop/api/04-代码/dt-tarmag/dt-tarmag-api/pictures/"
-								+ System.currentTimeMillis() + "_" + file.getOriginalFilename()));
-
-				IOUtils.copy(file.getInputStream(), fileOutputStream);
-			}
-		}
+		UserPost userPost = new UserPost();
+		userPost.setContent(content);
+		userPost.setJid(jid);
+		userPost.setCreateDate(new DateTime());
+		
+		log.debug("recieve new post -> " + userPost.toString());
+		
+		postService.createNewPost(userPost, files);
 
 		return ResponseEntity.ok().build();
 
@@ -106,16 +105,15 @@ public class UserPostResource {
 	 * @throws IOException
 	 */
 	@RequestMapping(value = "/userPostsWithSingleImage", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	@Timed
-	public ResponseEntity createWithSingleImage(@RequestParam(value = "fileName", required = false) String fileName,
+	public ResponseEntity createWithSingleImage(@RequestParam(value = "postId", required = false) Long postId,
 			@RequestParam(value = "file", required = false) MultipartFile file) throws URISyntaxException, IOException {
 
-		FileOutputStream fileOutputStream = new FileOutputStream(
-				new File("/Users/jerry/Desktop/api/04-代码/dt-tarmag/dt-tarmag-api/pictures/" + System.currentTimeMillis()
-						+ "_" + file.getOriginalFilename()));
-
-		IOUtils.copy(file.getInputStream(), fileOutputStream);
-
+		log.debug("REST request to save single image for post id = : {}", postId);
+		
+		if (postId != null) {
+			postService.saveSingleImageForPost(postId, file);
+			
+		}
 		return ResponseEntity.ok().build();
 
 	}

@@ -5,7 +5,9 @@ package com.doubletuan.sns.config;
  */
 public final class Constants {
 
-    private Constants() {
+    public static final String POST_IMAGE_RESOURCE_PATH = "http://192.168.0.120:8080/assets/posts/";
+
+	private Constants() {
     }
 
     // Spring profile for development, production and "fast", see http://jhipster.github.io/profiles.html
@@ -18,5 +20,7 @@ public final class Constants {
     public static final String SPRING_PROFILE_HEROKU = "heroku";
 
     public static final String SYSTEM_ACCOUNT = "system";
+    
+    public static final String POST_IMAGE_PATH = "/Users/jerry/Desktop/api/04-代码/dt-sns/src/main/webapp/assets/posts/";
 
 }

@@ -42,16 +42,16 @@ public class UserPost implements Serializable {
     @Column(name = "jid")
     private String jid;
     
-    @OneToMany
-    List<PostImage> postImages;
-
-    public List<PostImage> getPostImages() {
-		return postImages;
-	}
-
-	public void setPostImages(List<PostImage> postImages) {
-		this.postImages = postImages;
-	}
+//    @OneToMany
+//    List<PostImage> postImages;
+//
+//    public List<PostImage> getPostImages() {
+//		return postImages;
+//	}
+//
+//	public void setPostImages(List<PostImage> postImages) {
+//		this.postImages = postImages;
+//	}
 
 	public Long getId() {
         return id;
