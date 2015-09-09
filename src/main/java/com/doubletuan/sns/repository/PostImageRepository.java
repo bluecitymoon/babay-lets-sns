@@ -10,4 +10,6 @@ import java.util.List;
  */
 public interface PostImageRepository extends JpaRepository<PostImage,Long> {
 
+	@Query("select src from PostImage where userpost_id = ?1")
+	public List<String> findSrcByPostId(Long postId);
 }

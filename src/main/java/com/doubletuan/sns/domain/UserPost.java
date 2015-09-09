@@ -1,5 +1,6 @@
 package com.doubletuan.sns.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.doubletuan.sns.domain.util.CustomDateTimeDeserializer;
@@ -42,6 +43,11 @@ public class UserPost implements Serializable {
     @Column(name = "jid")
     private String jid;
     
+    @Transient
+    @JsonProperty
+    private List<String> imageSrcList;
+    
+    
 //    @OneToMany
 //    List<PostImage> postImages;
 //
@@ -52,6 +58,14 @@ public class UserPost implements Serializable {
 //	public void setPostImages(List<PostImage> postImages) {
 //		this.postImages = postImages;
 //	}
+
+	public List<String> getImageSrcList() {
+		return imageSrcList;
+	}
+
+	public void setImageSrcList(List<String> imageSrcList) {
+		this.imageSrcList = imageSrcList;
+	}
 
 	public Long getId() {
         return id;

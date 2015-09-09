@@ -3,12 +3,15 @@ package com.doubletuan.sns.web.rest;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
 
+import org.igniterealtime.restclient.entity.RosterEntities;
+import org.igniterealtime.restclient.entity.RosterItemEntity;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +39,7 @@ import com.doubletuan.sns.web.rest.util.PaginationUtil;
  */
 @RestController
 @RequestMapping("/api")
-public class UserPostResource {
+public class UserPostResource extends BaseResource{
 
 	private final Logger log = LoggerFactory.getLogger(UserPostResource.class);
 
@@ -142,6 +145,39 @@ public class UserPostResource {
 		Page<UserPost> page = userPostRepository.findAll(PaginationUtil.generatePageRequest(offset, limit));
 		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/userPosts", offset, limit);
 		return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+	}
+
+	/**
+	 * GET /userPosts -> get all the userPosts.
+	 */
+	@RequestMapping(value = "/avaliablePosts", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<UserPost>> getUserVisiblePosts(@RequestParam(value = "page", required = false) Integer offset,
+			@RequestParam(value = "per_page", required = false) Integer limit,
+			@RequestParam(value = "userId", required = true) String userId) throws URISyntaxException {
+		
+		RosterEntities rosterEntities = getRestApiClient().getRoster(userId);
+		List<String> rosterJids = getRosterJidsFromEntityList(rosterEntities, userId);
+		
+		Page<UserPost> page = postService.findUserReadablePosts(rosterJids, offset, limit);
+		
+		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/userPosts", offset, limit);
+		return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+	}
+	
+	private List<String> getRosterJidsFromEntityList(RosterEntities rosterEntities, String userId) {
+		
+		List<String> jids = new ArrayList<>();
+		jids.add(userId);
+		
+		for (RosterItemEntity rosterItem : rosterEntities.getRoster()) {
+			String singleJid = rosterItem.getJid();
+			if (singleJid.contains("@")) {
+				singleJid = singleJid.split("@")[0];
+			}
+			jids.add(singleJid);
+		}
+		
+		return jids;
 	}
 
 	/**

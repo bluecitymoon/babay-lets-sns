@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,6 +21,7 @@ import com.doubletuan.sns.domain.PostImage;
 import com.doubletuan.sns.domain.UserPost;
 import com.doubletuan.sns.repository.PostImageRepository;
 import com.doubletuan.sns.repository.UserPostRepository;
+import com.doubletuan.sns.web.rest.util.PaginationUtil;
 
 @Service("PostService")
 @Transactional
@@ -88,6 +90,20 @@ public class PostService {
 		
 		postImage.setUserPost(userPost);
 		postImageRepository.save(postImage);
+    }
+    
+    public Page<UserPost> findUserReadablePosts(List<String> jids, Integer offset, Integer limit) {
+    	
+    	Page<UserPost> page = userPostRepository.findByJidInOrderByIdDesc(jids, PaginationUtil.generatePageRequest(offset, limit));
+    	List<UserPost> posts = page.getContent();
+    	
+    	for (UserPost userPost : posts) {
+			List<String> images = postImageRepository.findSrcByPostId(userPost.getId());
+			userPost.setImageSrcList(images);
+		}
+    	
+    	return page;
+    	
     }
 
 }
