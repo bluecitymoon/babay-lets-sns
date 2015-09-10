@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.inject.Inject;
 
@@ -20,6 +21,7 @@ import com.doubletuan.sns.config.Constants;
 import com.doubletuan.sns.domain.PostImage;
 import com.doubletuan.sns.domain.UserPost;
 import com.doubletuan.sns.repository.PostImageRepository;
+import com.doubletuan.sns.repository.SystemConfigurationRepository;
 import com.doubletuan.sns.repository.UserPostRepository;
 import com.doubletuan.sns.web.rest.util.PaginationUtil;
 
@@ -34,6 +36,9 @@ public class PostService {
     
     @Inject
     private PostImageRepository postImageRepository;
+    
+    @Inject
+	private SystemConfigurationRepository systemConfigurationRepository;
     
     public void createNewPost(UserPost userPost, MultipartFile[] images) throws IOException {
     	
@@ -77,16 +82,26 @@ public class PostService {
     	
     	UserPost userPost = userPostRepository.findOne(postId);
     	
-    	String imageFileName = userPost.getJid() + System.currentTimeMillis() + "_" + file.getOriginalFilename();
+    	String userJid = userPost.getJid() == null? "nobody" : userPost.getJid();
+    	
+    	String imageFileName = System.currentTimeMillis() + "_"+ UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+    	String rootPath = systemConfigurationRepository.findConfigurationByIdentity(Constants.USER_UPLOADED_FILE_ROOT_PATH);
+    	String userUploadedPostRelativePath = systemConfigurationRepository.findConfigurationByIdentity(Constants.USER_UPLOADED_FILE_RELATIVE_PATH);
+		String fileName = rootPath + userUploadedPostRelativePath + userJid;
 		
-		FileOutputStream fileOutputStream = new FileOutputStream(new File(Constants.POST_IMAGE_PATH + imageFileName));
+		log.debug("new saving file folder -> " + fileName);
+		
+    	File newSavedFile = new File(fileName);
+    	
+    	if (!newSavedFile.exists()) {
+			newSavedFile.mkdir();
+		}
+		FileOutputStream fileOutputStream = new FileOutputStream(new File(fileName + "/" + imageFileName));
 
 		IOUtils.copy(file.getInputStream(), fileOutputStream);
 		
-		String src = Constants.POST_IMAGE_RESOURCE_PATH + imageFileName;
-		
 		PostImage postImage = new PostImage();
-		postImage.setSrc(src);
+		postImage.setSrc(imageFileName);
 		
 		postImage.setUserPost(userPost);
 		postImageRepository.save(postImage);
@@ -99,7 +114,19 @@ public class PostService {
     	
     	for (UserPost userPost : posts) {
 			List<String> images = postImageRepository.findSrcByPostId(userPost.getId());
-			userPost.setImageSrcList(images);
+			
+			if (images != null && images.size() > 0) {
+				
+				String systemRootHttpPath = systemConfigurationRepository.findConfigurationByIdentity(Constants.SYSTEM_ROOT_HTTP_PATH);
+		    	String userUploadedPostRelativePath = systemConfigurationRepository.findConfigurationByIdentity(Constants.USER_UPLOADED_FILE_RELATIVE_PATH);
+		    	
+		    	List<String> newList = new ArrayList<>();
+				for (String image : images) {
+					newList.add(systemRootHttpPath + userUploadedPostRelativePath + userPost.getJid() + "/" + image);
+				}
+				
+				userPost.setImageSrcList(newList);
+			}
 		}
     	
     	return page;

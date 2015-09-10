@@ -22,5 +22,9 @@ public final class Constants {
     public static final String SYSTEM_ACCOUNT = "system";
     
     public static final String POST_IMAGE_PATH = "/Users/jerry/Desktop/api/04-代码/dt-sns/src/main/webapp/assets/posts/";
+    
+    public static final String USER_UPLOADED_FILE_RELATIVE_PATH = "user_uploaded_file_relative_path";
+    public static final String SYSTEM_ROOT_HTTP_PATH = "system_root_http_path";
+    public static final String USER_UPLOADED_FILE_ROOT_PATH = "user_uploaded_file_root_path";
 
 }

@@ -1,0 +1,74 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="mySystemConfigurationLabel">Create or edit a SystemConfiguration</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label>ID</label>
+            <input type="text" class="form-control" name="id"
+                    ng-model="systemConfiguration.id" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="field_identity">Identity</label>
+            <input type="text" class="form-control" name="identity" id="field_identity"
+                    ng-model="systemConfiguration.identity">
+
+        </div>
+        <div class="form-group">
+            <label for="field_currentValue">CurrentValue</label>
+            <input type="text" class="form-control" name="currentValue" id="field_currentValue"
+                    ng-model="systemConfiguration.currentValue">
+
+        </div>
+        <div class="form-group">
+            <label for="field_column1">Column1</label>
+            <input type="text" class="form-control" name="column1" id="field_column1"
+                    ng-model="systemConfiguration.column1">
+
+        </div>
+        <div class="form-group">
+            <label for="field_value1">Value1</label>
+            <input type="text" class="form-control" name="value1" id="field_value1"
+                    ng-model="systemConfiguration.value1">
+
+        </div>
+        <div class="form-group">
+            <label for="field_column2">Column2</label>
+            <input type="text" class="form-control" name="column2" id="field_column2"
+                    ng-model="systemConfiguration.column2">
+
+        </div>
+        <div class="form-group">
+            <label for="field_value2">Value2</label>
+            <input type="text" class="form-control" name="value2" id="field_value2"
+                    ng-model="systemConfiguration.value2">
+
+        </div>
+        <div class="form-group">
+            <label for="field_column3">Column3</label>
+            <input type="text" class="form-control" name="column3" id="field_column3"
+                    ng-model="systemConfiguration.column3">
+
+        </div>
+        <div class="form-group">
+            <label for="field_value3">Value3</label>
+            <input type="text" class="form-control" name="value3" id="field_value3"
+                    ng-model="systemConfiguration.value3">
+
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

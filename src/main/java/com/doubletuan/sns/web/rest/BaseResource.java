@@ -7,10 +7,14 @@ import org.igniterealtime.restclient.entity.AuthenticationToken;
 
 import com.doubletuan.sns.domain.OpenFireConfiguration;
 import com.doubletuan.sns.repository.OpenFireConfigurationRepository;
+import com.doubletuan.sns.repository.SystemConfigurationRepository;
 
 public class BaseResource {
 	@Inject
     private OpenFireConfigurationRepository openFireConfigurationRepository;
+	
+//	@Inject
+//	public SystemConfigurationRepository systemConfigurationRepository;
 	
 	public BaseResource() {
 	}

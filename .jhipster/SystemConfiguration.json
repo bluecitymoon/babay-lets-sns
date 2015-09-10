@@ -1,0 +1,97 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "identity",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "Identity",
+            "fieldNameUnderscored": "identity",
+            "fieldInJavaBeanMethod": "Identity",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "currentValue",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "CurrentValue",
+            "fieldNameUnderscored": "current_value",
+            "fieldInJavaBeanMethod": "CurrentValue",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "column1",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "Column1",
+            "fieldNameUnderscored": "column1",
+            "fieldInJavaBeanMethod": "Column1",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "value1",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "Value1",
+            "fieldNameUnderscored": "value1",
+            "fieldInJavaBeanMethod": "Value1",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "column2",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "Column2",
+            "fieldNameUnderscored": "column2",
+            "fieldInJavaBeanMethod": "Column2",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "value2",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "Value2",
+            "fieldNameUnderscored": "value2",
+            "fieldInJavaBeanMethod": "Value2",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "column3",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "Column3",
+            "fieldNameUnderscored": "column3",
+            "fieldInJavaBeanMethod": "Column3",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "value3",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "Value3",
+            "fieldNameUnderscored": "value3",
+            "fieldInJavaBeanMethod": "Value3",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOwnerOneToOne": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150910012257",
+    "dto": "no",
+    "pagination": "pagination",
+    "validation": false
+}
