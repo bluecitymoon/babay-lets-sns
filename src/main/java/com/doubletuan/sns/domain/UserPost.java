@@ -25,7 +25,8 @@ public class UserPost implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "content")
+    @Lob
+    @Column(name = "content", length=512)
     private String content;
 
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")

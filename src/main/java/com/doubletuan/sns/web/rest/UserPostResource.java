@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.codahale.metrics.annotation.Timed;
+import com.doubletuan.sns.domain.PostImage;
 import com.doubletuan.sns.domain.UserPost;
 import com.doubletuan.sns.repository.UserPostRepository;
 import com.doubletuan.sns.service.PostService;
@@ -68,7 +69,7 @@ public class UserPostResource extends BaseResource{
 	 */
 	@RequestMapping(value = "/singlePost", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Timed
-	public ResponseEntity<String> createSinglePost(@RequestBody UserPost userPost) throws URISyntaxException {
+	public ResponseEntity<UserPost> createSinglePost(@RequestBody UserPost userPost) throws URISyntaxException {
 		
 		log.debug("REST request to save single post : {}", userPost);
 		if (userPost.getId() != null) {
@@ -76,7 +77,7 @@ public class UserPostResource extends BaseResource{
 		}
 		UserPost result = userPostRepository.save(userPost);
 		
-		return ResponseEntity.ok().body(result.getId().toString());
+		return ResponseEntity.ok().body(result);
 	}
 	
 	/**
@@ -108,16 +109,18 @@ public class UserPostResource extends BaseResource{
 	 * @throws IOException
 	 */
 	@RequestMapping(value = "/userPostsWithSingleImage", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ResponseEntity createWithSingleImage(@RequestParam(value = "postId", required = false) Long postId,
+	public ResponseEntity<PostImage> createWithSingleImage(@RequestParam(value = "postId", required = false) Long postId,
 			@RequestParam(value = "file", required = false) MultipartFile file) throws URISyntaxException, IOException {
 
 		log.debug("REST request to save single image for post id = : {}", postId);
 		
 		if (postId != null) {
-			postService.saveSingleImageForPost(postId, file);
+			PostImage postImage = postService.saveSingleImageForPost(postId, file);
 			
+			return ResponseEntity.ok(postImage);
+		} else {
+			return ResponseEntity.badRequest().body(null);
 		}
-		return ResponseEntity.ok().build();
 
 	}
 

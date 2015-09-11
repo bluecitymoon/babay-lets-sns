@@ -78,7 +78,7 @@ public class PostService {
     	
     }
     
-    public void saveSingleImageForPost(Long postId, MultipartFile file) throws IOException {
+    public PostImage saveSingleImageForPost(Long postId, MultipartFile file) throws IOException {
     	
     	UserPost userPost = userPostRepository.findOne(postId);
     	
@@ -104,7 +104,12 @@ public class PostService {
 		postImage.setSrc(imageFileName);
 		
 		postImage.setUserPost(userPost);
-		postImageRepository.save(postImage);
+		PostImage savedPostImage = postImageRepository.save(postImage);
+		
+		String systemRootHttpPath = systemConfigurationRepository.findConfigurationByIdentity(Constants.SYSTEM_ROOT_HTTP_PATH);
+		savedPostImage.setFullSrc(systemRootHttpPath + userUploadedPostRelativePath + userPost.getJid() + "/" + imageFileName);
+		
+		return savedPostImage;
     }
     
     public Page<UserPost> findUserReadablePosts(List<String> jids, Integer offset, Integer limit) {

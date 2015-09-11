@@ -1,11 +1,19 @@
 package com.doubletuan.sns.domain;
 
 
-import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 /**
@@ -30,11 +38,24 @@ public class PostImage implements Serializable {
 
     @Column(name = "src3")
     private String src3;
+    
+    @Transient
+    @JsonProperty
+    private String fullSrc;
+    
 
     @ManyToOne
     private UserPost userPost;
 
-    public Long getId() {
+    public String getFullSrc() {
+		return fullSrc;
+	}
+
+	public void setFullSrc(String fullSrc) {
+		this.fullSrc = fullSrc;
+	}
+
+	public Long getId() {
         return id;
     }
 
