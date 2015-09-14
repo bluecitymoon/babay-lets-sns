@@ -1,0 +1,58 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "userPost",
+            "relationshipNameCapitalized": "UserPost",
+            "relationshipFieldName": "userPost",
+            "otherEntityName": "userPost",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "UserPost",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "content",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "Content",
+            "fieldNameUnderscored": "content",
+            "fieldInJavaBeanMethod": "Content",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "createDate",
+            "fieldType": "DateTime",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "CreateDate",
+            "fieldNameUnderscored": "create_date",
+            "fieldInJavaBeanMethod": "CreateDate",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "type",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "Type",
+            "fieldNameUnderscored": "type",
+            "fieldInJavaBeanMethod": "Type",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOwnerOneToOne": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": true,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": true,
+    "fieldsContainDate": false,
+    "changelogDate": "20150914062622",
+    "dto": "no",
+    "pagination": "pagination",
+    "validation": false
+}

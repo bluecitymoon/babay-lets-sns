@@ -48,6 +48,10 @@ public class UserPost implements Serializable {
     @JsonProperty
     private List<String> imageSrcList;
     
+    @Transient
+    @JsonProperty
+    private List<PostComment> commentList;
+    
     
 //    @OneToMany
 //    List<PostImage> postImages;
@@ -59,6 +63,14 @@ public class UserPost implements Serializable {
 //	public void setPostImages(List<PostImage> postImages) {
 //		this.postImages = postImages;
 //	}
+
+	public List<PostComment> getCommentList() {
+		return commentList;
+	}
+
+	public void setCommentList(List<PostComment> commentList) {
+		this.commentList = commentList;
+	}
 
 	public List<String> getImageSrcList() {
 		return imageSrcList;

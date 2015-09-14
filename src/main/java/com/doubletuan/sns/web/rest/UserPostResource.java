@@ -81,6 +81,33 @@ public class UserPostResource extends BaseResource{
 	}
 	
 	/**
+	 * User shows greet to a post.
+	 */
+	@RequestMapping(value = "/greet/{postId}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public ResponseEntity<Integer> greetPost(@PathVariable("postId") Long postId) throws URISyntaxException {
+		
+		log.debug("User shows greet to the post", postId);
+		if (postId == null) {
+			return ResponseEntity.badRequest().header("Failure", "post id is not provided").body(null);
+		}
+		UserPost result = userPostRepository.findOne(postId);
+		if (result != null) {
+			
+			result.setGreetCount(result.getGreetCount() + 32);
+			
+			UserPost userPost = userPostRepository.save(result);
+			
+			return ResponseEntity.ok().body(userPost.getGreetCount());
+		} else {
+			
+			return ResponseEntity.badRequest().header("Failure", "Post is not found.").body(null);
+		}
+		
+	}
+	
+	
+	/**
 	 * POST /userPosts -> Create a new userPost.
 	 * 
 	 * @throws IOException

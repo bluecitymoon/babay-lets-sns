@@ -1,0 +1,55 @@
+
+<div>
+    <h2><span>PostComment</span> {{postComment.id}}</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span>Content</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{postComment.content}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>CreateDate</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{postComment.createDate}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Type</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{postComment.type}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>userPost</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{postComment.userPost.id}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="postComment"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

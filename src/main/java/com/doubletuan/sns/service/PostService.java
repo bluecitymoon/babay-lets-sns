@@ -18,8 +18,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.doubletuan.sns.config.Constants;
+import com.doubletuan.sns.domain.PostComment;
 import com.doubletuan.sns.domain.PostImage;
 import com.doubletuan.sns.domain.UserPost;
+import com.doubletuan.sns.repository.PostCommentRepository;
 import com.doubletuan.sns.repository.PostImageRepository;
 import com.doubletuan.sns.repository.SystemConfigurationRepository;
 import com.doubletuan.sns.repository.UserPostRepository;
@@ -39,6 +41,9 @@ public class PostService {
     
     @Inject
 	private SystemConfigurationRepository systemConfigurationRepository;
+    
+    @Inject
+    private PostCommentRepository postCommentRepository;
     
     public void createNewPost(UserPost userPost, MultipartFile[] images) throws IOException {
     	
@@ -132,9 +137,28 @@ public class PostService {
 				
 				userPost.setImageSrcList(newList);
 			}
+			
+			List<PostComment> postComments = postCommentRepository.findByUserPost_Id(userPost.getId());
+			if (postComments != null) {
+				userPost.setCommentsCount(postComments.size());
+				userPost.setCommentList(postComments);
+			}
+			
 		}
     	
     	return page;
+    	
+    }
+    
+    public PostComment commentPost(PostComment postComment, Long postId) {
+    	
+    	UserPost userPost = userPostRepository.findOne(postId);
+    	
+    	postComment.setUserPost(userPost);
+    	
+    	PostComment savedPostComment = postCommentRepository.save(postComment);
+    	
+    	return savedPostComment;
     	
     }
 
