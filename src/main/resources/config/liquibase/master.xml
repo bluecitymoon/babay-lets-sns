@@ -12,5 +12,6 @@
     <include file="classpath:config/liquibase/changelog/20150908031230_added_entity_PostImage.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150910012257_added_entity_SystemConfiguration.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150914062622_added_entity_PostComment.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150915071346_added_entity_CommentReply.xml" relativeToChangelogFile="false"/>
     <!-- JHipster will add liquibase changelogs here -->
 </databaseChangeLog>

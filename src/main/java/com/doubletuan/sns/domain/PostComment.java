@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -32,7 +33,8 @@ public class PostComment implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "content")
+    @Column(name = "content", length=512)
+    @Lob
     private String content;
 
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")

@@ -1,0 +1,55 @@
+
+<div>
+    <h2><span>CommentReply</span> {{commentReply.id}}</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span>Content</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{commentReply.content}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Jid</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{commentReply.jid}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>CreateDate</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{commentReply.createDate}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>postComment</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{commentReply.postComment.id}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="commentReply"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>
