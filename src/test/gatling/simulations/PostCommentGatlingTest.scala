@@ -80,7 +80,7 @@ class PostCommentGatlingTest extends Simulation {
             .exec(http("Create new postComment")
             .post("/api/postComments")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "content":"SAMPLE_TEXT", "createDate":"2020-01-01T00:00:00.000Z", "type":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "content":"SAMPLE_TEXT", "createDate":"2020-01-01T00:00:00.000Z", "type":"SAMPLE_TEXT", "jid":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_postComment_url")))
             .pause(10)

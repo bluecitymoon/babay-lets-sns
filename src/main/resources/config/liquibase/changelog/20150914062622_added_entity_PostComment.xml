@@ -21,6 +21,7 @@
             <column name="content" type="varchar(255)"/>
             <column name="create_date" type="timestamp"/>
             <column name="type" type="varchar(255)"/>
+            <column name="jid" type="varchar(255)"/>
             <column name="userpost_id" type="bigint"/>
         </createTable>
         <dropDefaultValue tableName="POSTCOMMENT" columnName="create_date" columnDataType="datetime"/>

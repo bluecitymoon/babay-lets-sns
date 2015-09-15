@@ -44,6 +44,9 @@ public class PostComment implements Serializable {
     @Column(name = "type")
     private String type;
 
+    @Column(name = "jid")
+    private String jid;
+
     @ManyToOne
     @JsonIgnore
     private UserPost userPost;
@@ -78,6 +81,14 @@ public class PostComment implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getJid() {
+        return jid;
+    }
+
+    public void setJid(String jid) {
+        this.jid = jid;
     }
 
     public UserPost getUserPost() {
@@ -116,6 +127,7 @@ public class PostComment implements Serializable {
                 ", content='" + content + "'" +
                 ", createDate='" + createDate + "'" +
                 ", type='" + type + "'" +
+                ", jid='" + jid + "'" +
                 '}';
     }
 }

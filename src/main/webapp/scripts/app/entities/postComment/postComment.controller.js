@@ -38,6 +38,6 @@ angular.module('dtsnsApp')
         };
 
         $scope.clear = function () {
-            $scope.postComment = {content: null, createDate: null, type: null, id: null};
+            $scope.postComment = {content: null, createDate: null, type: null, jid: null, id: null};
         };
     });

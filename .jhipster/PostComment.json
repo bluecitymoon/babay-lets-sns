@@ -41,6 +41,16 @@
             "fieldNameUnderscored": "type",
             "fieldInJavaBeanMethod": "Type",
             "fieldValidate": false
+        },
+        { 
+            "fieldId": 4,
+            "fieldName": "jid",
+            "fieldType": "String",
+            "fieldIsEnum": false,
+            "fieldNameCapitalized": "Jid",
+            "fieldNameUnderscored": "jid",
+            "fieldInJavaBeanMethod": "Jid",
+            "fieldValidate": false
         }
     ],
     "fieldsContainOwnerManyToMany": false,

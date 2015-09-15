@@ -53,6 +53,8 @@ public class PostCommentResourceTest {
     private static final String DEFAULT_CREATE_DATE_STR = dateTimeFormatter.print(DEFAULT_CREATE_DATE);
     private static final String DEFAULT_TYPE = "SAMPLE_TEXT";
     private static final String UPDATED_TYPE = "UPDATED_TEXT";
+    private static final String DEFAULT_JID = "SAMPLE_TEXT";
+    private static final String UPDATED_JID = "UPDATED_TEXT";
 
     @Inject
     private PostCommentRepository postCommentRepository;
@@ -75,6 +77,7 @@ public class PostCommentResourceTest {
         postComment.setContent(DEFAULT_CONTENT);
         postComment.setCreateDate(DEFAULT_CREATE_DATE);
         postComment.setType(DEFAULT_TYPE);
+        postComment.setJid(DEFAULT_JID);
     }
 
     @Test
@@ -95,6 +98,7 @@ public class PostCommentResourceTest {
         assertThat(testPostComment.getContent()).isEqualTo(DEFAULT_CONTENT);
         assertThat(testPostComment.getCreateDate().toDateTime(DateTimeZone.UTC)).isEqualTo(DEFAULT_CREATE_DATE);
         assertThat(testPostComment.getType()).isEqualTo(DEFAULT_TYPE);
+        assertThat(testPostComment.getJid()).isEqualTo(DEFAULT_JID);
     }
 
     @Test
@@ -110,7 +114,8 @@ public class PostCommentResourceTest {
                 .andExpect(jsonPath("$.[*].id").value(hasItem(postComment.getId().intValue())))
                 .andExpect(jsonPath("$.[*].content").value(hasItem(DEFAULT_CONTENT.toString())))
                 .andExpect(jsonPath("$.[*].createDate").value(hasItem(DEFAULT_CREATE_DATE_STR)))
-                .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())));
+                .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
+                .andExpect(jsonPath("$.[*].jid").value(hasItem(DEFAULT_JID.toString())));
     }
 
     @Test
@@ -126,7 +131,8 @@ public class PostCommentResourceTest {
             .andExpect(jsonPath("$.id").value(postComment.getId().intValue()))
             .andExpect(jsonPath("$.content").value(DEFAULT_CONTENT.toString()))
             .andExpect(jsonPath("$.createDate").value(DEFAULT_CREATE_DATE_STR))
-            .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()));
+            .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()))
+            .andExpect(jsonPath("$.jid").value(DEFAULT_JID.toString()));
     }
 
     @Test
@@ -149,6 +155,7 @@ public class PostCommentResourceTest {
         postComment.setContent(UPDATED_CONTENT);
         postComment.setCreateDate(UPDATED_CREATE_DATE);
         postComment.setType(UPDATED_TYPE);
+        postComment.setJid(UPDATED_JID);
         restPostCommentMockMvc.perform(put("/api/postComments")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(postComment)))
@@ -161,6 +168,7 @@ public class PostCommentResourceTest {
         assertThat(testPostComment.getContent()).isEqualTo(UPDATED_CONTENT);
         assertThat(testPostComment.getCreateDate().toDateTime(DateTimeZone.UTC)).isEqualTo(UPDATED_CREATE_DATE);
         assertThat(testPostComment.getType()).isEqualTo(UPDATED_TYPE);
+        assertThat(testPostComment.getJid()).isEqualTo(UPDATED_JID);
     }
 
     @Test

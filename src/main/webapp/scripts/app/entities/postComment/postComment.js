@@ -51,7 +51,7 @@ angular.module('dtsnsApp')
                         size: 'lg',
                         resolve: {
                             entity: function () {
-                                return {content: null, createDate: null, type: null, id: null};
+                                return {content: null, createDate: null, type: null, jid: null, id: null};
                             }
                         }
                     }).result.then(function(result) {
